@@ -10,7 +10,8 @@ COPY main.py .
 
 
 # Gerekli paketleri yükle
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
+
 
 # API'yi başlat
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "7001"]
