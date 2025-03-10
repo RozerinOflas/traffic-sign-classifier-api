@@ -7,7 +7,7 @@ WORKDIR /app
 # Gerekli dosyaları kopyala
 COPY requirements.txt .
 COPY main.py .
-COPY model/ model/
+
 
 # Gerekli paketleri yükle
 RUN pip install --no-cache-dir -r requirements.txt
