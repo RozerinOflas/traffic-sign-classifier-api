@@ -2,4 +2,6 @@ fastapi
 torch
 torchvision
 uvicorn
+tensorflow
+numpy
 pillow
