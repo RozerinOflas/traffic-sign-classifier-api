@@ -6,4 +6,4 @@ services:
     ports:
       - "7001:7001"
     volumes:
-      - ./model:/app/model
+      - .:/app
