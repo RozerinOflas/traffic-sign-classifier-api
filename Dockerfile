@@ -1,17 +1,15 @@
-# Resmi Python imajını kullan
-FROM python:3.9
+# Küçük ve optimize edilmiş Python 3.9 imajı
+FROM python:3.9-slim  
 
-# Çalışma dizinini ayarla
-WORKDIR /app
+# Çalışma dizini oluştur
+WORKDIR /app  
 
-# Gerekli dosyaları kopyala
-COPY requirements.txt .
-COPY main.py .
+# Bağımlılıkları kopyala ve yükle (Cache avantajı için sırayla yapılıyor)
+COPY requirements.txt .  
+RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt  
 
+# Uygulama dosyalarını kopyala
+COPY . .  
 
-# Gerekli paketleri yükle
-RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
-
-
-# API'yi başlat
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "7001"]
+# Uvicorn'u optimize etmek için ayarları belirle
+ENTRYPOINT ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "4", "--timeout-keep-alive", "60"]
