@@ -2,7 +2,11 @@
 services:
   fastapi_app:
     build: .
+    container_name: traffic_sign_classifier
     ports:
-      - "7001:7001"
+      - "8000:8000"
     volumes:
-      - ./model:/app/model
+      - .:/app
+    restart: always
+    environment:
+      - PYTHONUNBUFFERED=1  # Daha hızlı log çıktısı
