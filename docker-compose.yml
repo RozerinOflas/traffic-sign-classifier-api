@@ -1,12 +1,11 @@
 version: '3.8'
 
 services:
-  app:
+  fastapi:
     build: .
     ports:
       - "7001:7001"
     volumes:
       - .:/app
     environment:
-      - MODEL_PATH=/app/model.pkl
-    restart: always
+      - PYTHONUNBUFFERED=1
