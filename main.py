@@ -9,7 +9,7 @@ from PIL import Image
 app = FastAPI()
 
 # Modeli yükleme
-model_path = "trafic_sign_classifier.h5"  # Colab'de eğitilen model
+model_path = "traffic_sign_classifier.h5"  # Colab'de eğitilen model
 model = load_model(model_path)
 
 # Sınıf isimleri
