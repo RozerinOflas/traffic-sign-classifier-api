@@ -40,7 +40,7 @@ async def predict(file: UploadFile = File(...)):
 
     # Görüntüyü numpy dizisine çevirme
     img_array = image.img_to_array(image_data)
-    img_array = np.expand_dims(img_array, axis=0) / 255.0  # Normalizasyon
+    img_array = np.expand_dims(img_array, axis=0)
 
     # Model ile tahmin yapma
     predictions = model.predict(img_array)
